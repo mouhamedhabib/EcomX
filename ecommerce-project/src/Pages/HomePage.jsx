@@ -4,11 +4,11 @@ import { Headers } from '../components/Headers'
 
 import './HomePage.css'
 
-export function HomePage() {
+export function HomePage({cart}) {
 
   const [products, setProducts] = useState([]) // we use useState([])  to create a state variable (products) to hold the products data from the backend
   // frist value in [] name of the data and the seconde name update a function (setProducts) to update the data (products) and regenerate html 
-  const [cart , setCart] = useState([]) 
+
   
   // useEffetc run code bellow when making any changes in backend 
   useEffect (() => {
@@ -19,10 +19,7 @@ export function HomePage() {
     // .then((data) => {
     //     console.log(data)
     //   }) FETCH API EXAMPLE without Axios (fetch API)
-    axsios.get('/api/cart-items')
-      .then((response) => {
-        setCart(response.data)
-    })
+   
   } , [] ) // Dependancy array is empty to run only once when the component mounts
   
 
