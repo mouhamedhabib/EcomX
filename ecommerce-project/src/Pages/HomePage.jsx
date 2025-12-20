@@ -12,14 +12,14 @@ export function HomePage() {
   
   // useEffetc run code bellow when making any changes in backend 
   useEffect (() => {
-    axsios.get('http://localhost:3000/api/products')
+    axsios.get('/api/products') // we can http://localhost:3000 and make short cut in vite config.js
     .then((response)=>{
       setProducts(response.data) // setProducts useStade (products) to update the data (products) and regenerate html
     }) // Fetching products from the API with Axios
     // .then((data) => {
     //     console.log(data)
     //   }) FETCH API EXAMPLE without Axios (fetch API)
-    axsios.get('http://localhost:3000/api/cart-items')
+    axsios.get('/api/cart-items')
       .then((response) => {
         setCart(response.data)
     })
