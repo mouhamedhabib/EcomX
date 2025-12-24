@@ -31,7 +31,8 @@ export function HomePage({ cart }) {
       setProducts(response.data)
     };
     getHomeData();
-  }, []) // use effect run a componet after render the html page with out [] it will run infinite loop
+  }, [])
+  // use effect run a componet after render the html page with out [] it will run infinite loop
   //2 use effect can`t be assync function directly becouse it expect a clean up function or nothing not a promise for that we creat a function inside use effect and make it assync
   // 3 react creat const [products, setProducts] = useState([]); and return products and setProducts to use it in the function
   //4 the effect is run now with a complete comopnmet like pizzle and talk with getHomeData()
