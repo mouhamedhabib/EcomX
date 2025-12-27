@@ -6,7 +6,7 @@ import { FormatMoney } from '../../utlis/money'
 import './HomePage.css'
 import { ProductGrid } from './ProductGrid'
 
-export function HomePage({ cart }) {
+export function HomePage({ cart , loadCart}) {
 
   const [products, setProducts] = useState([]) // we use useState([])  to create a state variable (products) to hold the products data from the backend
   // frist value in [] name of the data and the seconde name update a function (setProducts) to update the data (products) and regenerate html 
@@ -70,7 +70,7 @@ Update UI
   
 
     <div className="home-page">
-        <ProductGrid products={products} />
+        <ProductGrid products={products} loadCart={loadCart} />
     </div>
     </div>
   )

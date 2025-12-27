@@ -8,7 +8,7 @@ import { OrderSummary } from '../order/OrderSummary'
 import { PaymentSummary } from '../order/PaymentSummary'
 
 
-export function ChekoutPage({ cart }) {
+export function ChekoutPage({ cart , loadCard  }) {
   const [deliveryOptions, setDeliveryOptions] = useState([])
   const [paymentSummary , setPaymentSummary] = useState([NaN])
     useEffect(() =>{
@@ -20,7 +20,7 @@ export function ChekoutPage({ cart }) {
           setPaymentSummary(response.data);
           };
           fetchCheckoutData();
-  }, [])
+  }, [cart]) // we add cart in dependancy array to reload delivery options when cart change (item added or removed)
   return (
     <div>
 
@@ -37,7 +37,7 @@ export function ChekoutPage({ cart }) {
       <div className="page-title">Review your order</div>
 
       <div className="checkout-grid">
-          <OrderSummary cart={cart} deliveryOptions={deliveryOptions} />
+          <OrderSummary cart={cart} deliveryOptions={deliveryOptions} loadCard={loadCard} />
 
         <PaymentSummary paymentSummary={paymentSummary} />
       </div>

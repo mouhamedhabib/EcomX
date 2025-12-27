@@ -20,12 +20,13 @@ function App() {
   //    })
   //  }, []) go to the pages/checkout/CheckoutPage.jsx to see why we change the code up
 
+  const loadCard = async () => {
+    const response = await axsios.get('/api/cart-items?expand=product')
+    setCart(response.data)
+  };
+  // we make load card outside the use Effect to share it with other componets
   useEffect(() => {
-    const getAppData = async () => {
-      const response = await axsios.get('/api/cart-items?expand=product')
-      setCart(response.data)
-    };
-    getAppData();
+    loadCard();
   }, [])
 
   return (
@@ -34,8 +35,8 @@ function App() {
       <Routes>
             {/* Route for the home page */}
             {/* When the path is '/', HomePage component is rendered */}
-        <Route index element={<HomePage cart={cart} />} /> 
-        <Route path='/checkout' element={<ChekoutPage cart={cart} />} />
+        <Route index element={<HomePage cart={cart} loadCart={loadCard} />} />
+        <Route path='/checkout' element={<ChekoutPage cart={cart} loadCart={loadCard} />} />
         <Route path='orders' element={<OrdersPage cart = {cart} />} />
         <Route path='/tracking/:orderId/:productId' element={<TrackingPage />} />
       </Routes>
