@@ -2,11 +2,11 @@ import axios from "axios";
 import { FormatMoney } from "../../utlis/money";
 import { useNavigate } from "react-router";
 
-export function PaymentSummary({ paymentSummary, loadCard }) {
+export function PaymentSummary({ paymentSummary, loadCart }) {
   const navigate = useNavigate(); // useNavigate give us a function name navigate to navigate to another page 
   const createOrder = async () => {
     await axios.post('/api/orders');
-    await loadCard();
+    await loadCart();
     navigate('/orders'); // after creating order navigate to orders page 
     // navigate is not assync . and we dont need to await  
   }

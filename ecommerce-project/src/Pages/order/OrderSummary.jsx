@@ -3,7 +3,7 @@ import { FormatMoney } from "../../utlis/money"
 import { DeliveryOptions } from "./DeliveryOptions"
 import axios from "axios";
 
-export function OrderSummary({ cart, deliveryOptions, loadCard   }) {
+export function OrderSummary({ cart, deliveryOptions, loadCart   }) {
   
   return (
      <div className="order-summary">
@@ -15,7 +15,7 @@ export function OrderSummary({ cart, deliveryOptions, loadCard   }) {
                      })
                    const deleteCartItem = async () => {
                      await axios.delete(`/api/cart-items/${cartItem.productId}`);
-                     await loadCard();
+                     await loadCart();
                      }
                  
                    
@@ -56,7 +56,7 @@ export function OrderSummary({ cart, deliveryOptions, loadCard   }) {
                      </div>
                    </div>
      
-                         <DeliveryOptions deliveryOptions={deliveryOptions} cartItem={cartItem} loadCard={ loadCard} />
+                         <DeliveryOptions deliveryOptions={deliveryOptions} cartItem={cartItem} loadCart={ loadCart} />
                  </div>
                </div>
                    )

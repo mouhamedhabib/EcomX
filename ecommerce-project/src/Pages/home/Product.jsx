@@ -6,6 +6,7 @@ import { useState } from "react";
 export function Product({ product, loadCart }) {
 
   const [quantity, setQuantity] = useState(1)
+  const [showAddedMessage, setShowAddedMessage] = useState(false);
   const addTocard = async () => {
                           {/*
                             Rember get to get data from backend
@@ -26,7 +27,12 @@ export function Product({ product, loadCart }) {
                             // we can make shortCUT like bellow quantity: quantity
                            quantity
                          })
-                         await loadCart(); // after adding item to cart we call loadCart to update the cart in the home page
+    await loadCart(); // after adding item to cart we call loadCart to update the cart in the home page
+    setShowAddedMessage(true); // show the added message
+    setTimeout(() => {
+      setShowAddedMessage(false); // hide the added message after 2 seconds
+    }, 2000)
+    
   }
   
   const SelectQuantity = (event) => { 
@@ -84,7 +90,7 @@ export function Product({ product, loadCart }) {
      
                <div className="product-spacer"></div>
      
-               <div className="added-to-cart">
+               <div className="added-to-cart" style={{ opacity: showAddedMessage ? 1 : 0 }}>
                  <img src="images/icons/checkmark.png" />
                  Added
                </div>

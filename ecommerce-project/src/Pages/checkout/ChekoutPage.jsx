@@ -8,7 +8,7 @@ import { OrderSummary } from '../order/OrderSummary'
 import { PaymentSummary } from '../order/PaymentSummary'
 
 
-export function ChekoutPage({ cart , loadCard  }) {
+export function ChekoutPage({ cart , loadCart  }) {
   const [deliveryOptions, setDeliveryOptions] = useState([])
   const [paymentSummary , setPaymentSummary] = useState([NaN])
     useEffect(() =>{
@@ -37,9 +37,9 @@ export function ChekoutPage({ cart , loadCard  }) {
       <div className="page-title">Review your order</div>
 
       <div className="checkout-grid">
-          <OrderSummary cart={cart} deliveryOptions={deliveryOptions} loadCard={loadCard} />
+          <OrderSummary cart={cart} deliveryOptions={deliveryOptions} loadCart={loadCart} />
 
-        <PaymentSummary paymentSummary={paymentSummary} loadCard={loadCard} />
+        <PaymentSummary paymentSummary={paymentSummary} loadCart={loadCart} />
       </div>
     </div>
     </div>
